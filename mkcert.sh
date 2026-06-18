@@ -11,3 +11,8 @@ if [ -n "$cert" ] && [ -n "$key" ]; then
     ln -sf "$cert" api.pem
     ln -sf "$key" api-key.pem
 fi
+
+# Export the mkcert root CA next to the leaf so install/frontend_setup.sh can
+# copy it into the API static dir. The old mkcerts.sh did this; without it a
+# fresh install fails on `cp .../certs/rootCA.pem`.
+cp "$(mkcert -CAROOT)/rootCA.pem" ./rootCA.pem
