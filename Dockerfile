@@ -1,4 +1,4 @@
-FROM alpine:3.23
+FROM alpine:3.23.6
 
 RUN apk add wget
 # Pin + verify the mkcert binary. SHA256 was computed and verified independently
